@@ -13,3 +13,9 @@ class grupo(models.Model):
     letra = models.CharField(max_length=1)
     seleccion = models.CharField(max_length=40)
 
+class Registro(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+    email = models.EmailField()
+    edad = models.IntegerField()
+

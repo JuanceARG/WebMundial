@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from DataMundial.models import Registro
+from DataMundial.forms import form_registro
 from DataMundial.models import selecciones
 from DataMundial.models import grupo
 
@@ -15,7 +17,11 @@ def inicio2(request):
     return render(request, 'inicio2.html')
 
 def registro(request):
-    return render(request, 'registro.html')
+    if request.method == "POST":
+        registrar = Registro(nombre=request.POST['nombre'], apellido=request.POST['apellido'], email=request.POST['email'], edad=request.POST['edad'])
+        registrar.save()
+        return render(request, "registro.html")   
+    return render(request, "registro.html")
 
 def ver_selecciones(request):
     return render(request, 'selecciones.html')
