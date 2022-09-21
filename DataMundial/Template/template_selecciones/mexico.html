@@ -1,0 +1,33 @@
+{% extends "inicio.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <title>Qatar 2022</title>
+</head>
+<body>
+  {% block contenido %}
+    <table class="table table-bordered border-primary" style="background-color: #fff;">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Posicion</th>
+        </tr>
+      </thead>
+      {% for jugador in mexico %}
+        <tbody >
+          <tr>
+            <th scope="row">{{jugador.jug_nombre}}</th>
+            <td>{{jugador.jug_apellido}}</td>
+            <td>{{jugador.posicion}}</td>
+          </tr>
+        {% endfor %}
+    </table>
+  {% endblock%}
+</body>
+</html>

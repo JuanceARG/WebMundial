@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from DataMundial.models import Registro
-from DataMundial.forms import form_registro
+from DataMundial.forms import form_registros
 from DataMundial.models import selecciones
 from DataMundial.models import grupo
 
@@ -16,12 +16,27 @@ def inicio(request):
 def inicio2(request):
     return render(request, 'inicio2.html')
 
-def registro(request):
+########################## registro y busqueda ###############################
+def registros(request):
     if request.method == "POST":
-        registrar = Registro(nombre=request.POST['nombre'], apellido=request.POST['apellido'], email=request.POST['email'], edad=request.POST['edad'])
-        registrar.save()
-        return render(request, "registro.html")   
-    return render(request, "registro.html")
+        registro= Registro(nombre=request.POST['nombre'], apellido=request.POST['apellido'], email=request.POST['email'], edad=request.POST['edad'])
+        registro.save()
+        return render(request, "registros.html")   
+    return render(request, "registros.html")
+
+def buscar_registro(request):
+    if request.GET["email"]:
+        email = request.GET["email"]
+        registros = Registro.objects.filter(email__icontains = email) 
+        if registros:
+            return render(request, "registros.html", {"registros": registros})
+        else:
+            return HttpResponse("NO EXISTEN REGISTROS")
+     
+    else:
+        respuesta = "No enviaste datos"
+    return HttpResponse(respuesta)
+##############################################################################
 
 def ver_selecciones(request):
     return render(request, 'selecciones.html')
@@ -33,5 +48,13 @@ def pronostico(request):
     return render(request, 'pronostico.html')
 
 def ver_argentina(request):
-    Argentina = selecciones.objects.all()
-    return render(request, "argentina.html",{'argentina':Argentina})
+    argentina = selecciones.objects.filter(seleccion = "Argentina")
+    return render(request, "argentina.html",{'argentina':argentina})
+
+def ver_mexico(request):
+    mexico = selecciones.objects.filter(seleccion = "Mexico")
+    return render(request, "mexico.html",{'mexico':mexico})
+
+def ver_usa(request):
+    usa = selecciones.objects.filter(seleccion = "USA")
+    return render(request, "usa.html",{'usa':usa})
