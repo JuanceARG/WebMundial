@@ -7,9 +7,10 @@ urlpatterns = [
     path('', inicio),
     path('DataMundial/', inicio),
     path('inicio/', inicio),
-    path('registro/', registro),
+    path('registros/', registros),
     path('selecciones/', ver_selecciones),
     path('concurso/', concurso),
     path('pronostico/', pronostico),
     path('argentina/', ver_argentina),
+    path('buscar_registro/', buscar_registro),
 ]
