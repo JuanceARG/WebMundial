@@ -38,17 +38,22 @@ def buscar_registro(request):
     return HttpResponse(respuesta)
 ##############################################################################
 
+def ver_grupos(request):
+    return render(request, 'grupos.html')
+
 def ver_selecciones(request):
-    return render(request, 'selecciones.html')
+    equipos = selecciones.objects.all()
+    return render(request, 'selecciones.html', {'equipos': equipos})
 
 def concurso(request):
-    return render(request, 'concurso.html')
+    argentina = selecciones.objects.filter(seleccion = 'Argentina')
+    return render(request, "concurso.html",{'argentina':argentina})
 
 def pronostico(request):
     return render(request, 'pronostico.html')
 
 def ver_argentina(request):
-    argentina = selecciones.objects.filter(seleccion = "Argentina")
+    argentina = selecciones.objects.filter(seleccion = 'Argentina')
     return render(request, "argentina.html",{'argentina':argentina})
 
 def ver_mexico(request):
