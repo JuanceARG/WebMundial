@@ -42,7 +42,7 @@ def ver_grupos(request):
     return render(request, 'grupos.html')
 
 def ver_selecciones(request):
-    equipos = selecciones.objects.all()
+    equipos = grupo.objects.all()
     return render(request, 'selecciones.html', {'equipos': equipos})
 
 def concurso(request):
@@ -52,14 +52,7 @@ def concurso(request):
 def pronostico(request):
     return render(request, 'pronostico.html')
 
-def ver_argentina(request):
-    argentina = selecciones.objects.filter(seleccion = 'Argentina')
-    return render(request, "argentina.html",{'argentina':argentina})
-
-def ver_mexico(request):
-    mexico = selecciones.objects.filter(seleccion = "Mexico")
-    return render(request, "mexico.html",{'mexico':mexico})
-
-def ver_usa(request):
-    usa = selecciones.objects.filter(seleccion = "USA")
-    return render(request, "usa.html",{'usa':usa})
+#Muestra la seleccion elegida en template selecciones
+def detalle_seleccion(request, seleccion_seleccion):
+    verSeleccion = selecciones.objects.filter(seleccion = seleccion_seleccion)
+    return render (request, "seleccionElegida.html", {'seleccion':verSeleccion} )

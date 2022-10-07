@@ -35,32 +35,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link rel="stylesheet" href="{%static 'css/style.css'%}">
 	<link href="{%static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
 	<script src="{%static 'js/jquery-2.1.4.min.js'%}"></script>
-		<div class="content" id="Main-Content" style="background-color:#ffffffd8;">
+		<div class="content" id="Main-Content" style="background-color:#ffffffb5;">			
 			<h1 style="color:black">JUGADORES</JUGADORES></h1>
 			<div class="agileits-top-slider">
 				<div class="slider">
 					<div class="callbacks_container">
 						<ul class="rslides callbacks callbacks1" id="slider4">
-							<li>
+							<li>														
 								<div class="pricing">
 									<div class="pricing-top green-top">
 										<h3>Arqueros</h3>										
 									</div>
-									<div class="pricing-bottom">
-										<table class="table" style="background-color: #ffffffb5;">
-											
-											{% for jugador in usa %}
-												{% if jugador.posicion == 'Arquero'%}
-												<tbody >
-													<tr>
-													<th scope="row">{{jugador.jug_nombre}}</th>
-													<td>{{jugador.jug_apellido}}</td>													
-													</tr>
-												{% endif %}
-											{% endfor %}
-										  </table>							
+									<div class="pricing-bottom">											
+											<table class="table" style="background-color:#ffffffb5;">
+												
+												{% for jugador in seleccion %}
+													{% if jugador.posicion == 'Arquero'%}
+													<tbody>
+														<tr>
+														<th scope="row">{{jugador.jug_nombre}}</th>
+														<td>{{jugador.jug_apellido}}</td>													
+														</tr>
+													</tbody>
+													{% endif %}
+												{% endfor %}
+											</table>																	
 									</div>
-								</div>
+								</div>												
 							</li>
 							<li>
 								<div class="pricing">
@@ -70,7 +71,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="pricing-bottom">
 										<table class="table" style="background-color: #ffffffb5;">
 											
-											{% for jugador in usa %}
+											{% for jugador in seleccion %}
 												{% if jugador.posicion == 'Defensor'%}
 												<tbody >
 													<tr>
@@ -92,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<div class="pricing-bottom-top">
 											<table class="table" style="background-color: #ffffffb5;">
 											
-												{% for jugador in usa %}
+												{% for jugador in seleccion %}
 													{% if jugador.posicion == 'Mediocampista'%}
 													<tbody >
 														<tr>
@@ -114,7 +115,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="pricing-bottom">
 										<table class="table" style="background-color: #ffffffb5;">
 											
-											{% for jugador in usa %}
+											{% for jugador in seleccion %}
 												{% if jugador.posicion == 'Delantero'%}
 												<tbody >
 													<tr>
@@ -139,7 +140,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							auto: true,
 							pager:true,
 							nav:true,
-							speed: 500,
+							speed: 800,
 							namespace: "callbacks",
 							before: function () {
 									$('.events').append("<li>before event fired.</li>");
