@@ -11,9 +11,7 @@ urlpatterns = [
     path('selecciones/', ver_selecciones),
     path('grupos/', ver_grupos),
     path('concurso/', concurso),
-    path('pronostico/', pronostico),
-    path('argentina/', ver_argentina),
-    path('mexico/', ver_mexico),
-    path('usa/', ver_usa),
+    path('pronostico/', pronostico),    
+    path('seleccionElegida/<seleccion_seleccion>', detalle_seleccion),
     path('buscar_registro/', buscar_registro),
 ]
