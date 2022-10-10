@@ -1,4 +1,6 @@
+from distutils.command.upload import upload
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -19,3 +21,6 @@ class Registro(models.Model):
     email = models.EmailField()
     edad = models.IntegerField()
 
+class Avatar(models.Model):
+    user= models.ForeignKey(User, on_delete = models.CASCADE)
+    image = models.ImageField(upload_to= 'avatares', null = True, blank = True)

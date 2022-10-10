@@ -10,27 +10,65 @@
 </head>
 <body style="background-color:#0c5692d8;">
     <header class="site-header sticky-top py-1">
-      <nav class="container d-flex flex-column flex-md-row justify-content-between">
-        <!-- <a class="py-2" href="#" aria-label="Product">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
-        </a> -->
-       <!-- EN ESTA SECCION SE COLOCAN LOS ACCESOR DE LA BARRA SUPERIOR O HEADER -->
-        <a class="py-2 d-none d-md-inline-block" href="/DataMundial/inicio" style="color:#ffffff">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="/DataMundial/registros" style="color:#ffffff">Registro</a>
-        <a class="py-2 d-none d-md-inline-block" href="/DataMundial/concurso" style="color:#ffffff">Concurso</a>
-        <a class="py-2 d-none d-md-inline-block" href="/DataMundial/selecciones" style="color:#ffffff">Selecciones</a>
-        <a class="py-2 d-none d-md-inline-block" href="/DataMundial/pronostico" style="color:#ffffff">Pronosticos</a>
-        <a class="py-2 d-none d-md-inline-block" href="/DataMundial/grupos" style="color:#ffffff">Grupos</a>
-      </nav>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/DataMundial/inicio">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/DataMundial/concurso">Concurso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/DataMundial/selecciones">Selecciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/DataMundial/pronostico">Pronostico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/DataMundial/grupos">Grupos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/DataMundial/miseleccion">Arma tu seleccion</a>
+                  </li>
+                  {% if user.id is not none%}
+                      <li class="nav-item" style="position: absolute; right: 350px; top: 16px;">
+                        <img src="{{ avatar }}" width="40px">
+                      </li> 
+                      <li class="nav-item" style="position: absolute; right: 250px; top: 16px;">
+                        <a class="alert alert-warning">{{ user.username }}</a>
+                      </li>                 
+                      <li class="nav-item" style="position: absolute; right: 90px">
+                        <a class="btn btn-outline-secondary" href="/DataMundial/perfil/editarPerfil">Editar Perfil</a>
+                      </li>                           
+                      <li class="nav-item" style="position: absolute; right: 10px">
+                        <a class="btn btn-outline-secondary" href="/DataMundial/logout">Salir</a>
+                    {% else %}
+                      <li class="nav-item" style="position: absolute; right: 180px">
+                        <a class="btn btn-outline-secondary" href="/DataMundial/login">Iniciar Sesión</a>
+                      </li>
+
+                      <li class="nav-item" style="position: absolute; right: 20px">
+                        <a class="btn btn-outline-secondary" href="/DataMundial/registro">Registrarse</a>
+                      </li>
+                  {% endif %}
+                    </li>                
+                  
+                </ul>
+            </div>
+            
+        </div>
     </header>
     
     <main>
       {% block contenido %}
+      
       <!-- ESTA PRIMERA DIVISION CORRESPONDE AL TEXTO DE BIENVENIDA-->
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-30 text-center bg-light">
           <div class="col-md-50 p-lg-50 mx-auto my-5">
             <h1 class="display-4 fw-normal">BIENVENIDO A LA PAGINA DE LA SUERTE MUNDIALISTA </h1>
-            <p class="lead fw-normal">Acá podrás participar adivinando ganadores y campeón del mundial Qatan 2022!</p>
+            <p class="lead fw-normal">Acá podrás participar adivinando ganadores y campeón del mundial Qatar 2022!</p>
             <p class="lead fw-normal">También podrás mirar estadísticas y pronósticos.</p>
             <!--   <a class="btn btn-outline-secondary" href="#">Coming soon</a> -->
           </div>
