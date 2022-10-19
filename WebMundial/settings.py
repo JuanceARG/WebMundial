@@ -58,7 +58,7 @@ ROOT_URLCONF = 'WebMundial.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [f'{BASE_DIR}/DataMundial/template',f'{BASE_DIR}/DataMundial/template/template_selecciones'],
+        'DIRS': [f'{BASE_DIR}/DataMundial/Template',f'{BASE_DIR}/DataMundial/Template/template_selecciones'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
